@@ -3,18 +3,18 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form, Button } from "react-bootstrap";
 
-const AgendamentoForm = () => {
+const AgendamentosForm = () => {
   const { register, handleSubmit, setValue } = useForm();
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
     if (id) {
-      loadAgendamento();
+      loadAgendamentos();
     }
   }, [id]);
 
-  const loadAgendamento = async () => {
+  const loadAgendamentos = async () => {
     try {
       const response = await fetch(`http://localhost:3000/api/agendamentos/${id}`);
       if (!response.ok) {
@@ -30,7 +30,7 @@ const AgendamentoForm = () => {
 
   const onSubmit = async (data) => {
     try {
-      console.log("Dados enviados:", data); // Adiciona log dos dados enviados
+      console.log("Dados enviados:", data); 
       const options = {
         method: id ? "PUT" : "POST",
         headers: {
@@ -74,4 +74,4 @@ const AgendamentoForm = () => {
   );
 };
 
-export default AgendamentoForm;
+export default AgendamentosForm;

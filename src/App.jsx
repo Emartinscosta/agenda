@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Container, Navbar, Nav } from "react-bootstrap";
-import AgendamentosList from "./components/AgendamentosList.jsx";
-import AgendamentoForm from "./components/AgendamentoForm.jsx";
+import AgendamentosList from "./components/AgendamentosList.jsx"; 
+import AgendamentosForm from "./components/AgendamentosForm.jsx"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -17,9 +17,9 @@ function App() {
       </Navbar>
       <Container>
         <Routes>
-          <Route exact path="/" element={<AgendamentosList />} />
-          <Route path="/novo" element={<AgendamentoForm />} />
-          <Route path="/editar/:id" element={<AgendamentoForm />} />
+          <Route exact path="/" element={<AgendamentosList />} /> 
+          <Route path="/novo" element={<AgendamentosForm />} /> 
+          <Route path="/editar/:id" element={<AgendamentosForm />} /> 
         </Routes>
       </Container>
     </Router>

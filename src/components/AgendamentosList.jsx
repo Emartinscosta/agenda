@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 
 const AgendamentosList = () => {
-  const [agendamentos, setAgendamentos] = useState([]);
+  const [Agendamentos, setagendamentos] = useState([]);
 
   useEffect(() => {
     loadAgendamentos();
@@ -11,20 +11,20 @@ const AgendamentosList = () => {
 
   const loadAgendamentos = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/agendamentos");
+      const response = await fetch("http://localhost:3000/api/Agendamentos");
       if (!response.ok) {
         throw new Error("Erro ao carregar agendamentos");
       }
       const data = await response.json();
-      setAgendamentos(data);
+      setagendamentos(data);
     } catch (error) {
       console.error("Erro ao carregar agendamentos:", error);
     }
   };
 
-  const deleteAgendamento = async (id) => {
+  const deleteagendamentos = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/agendamentos/${id}`, {
+      const response = await fetch(`http://localhost:3000/api/Agendamento/${id}`, {
         method: "DELETE",
       });
       if (!response.ok) {
@@ -49,14 +49,14 @@ const AgendamentosList = () => {
           </tr>
         </thead>
         <tbody>
-          {agendamentos.map((agendamento) => (
-            <tr key={agendamento.id}>
-              <td>{agendamento.nomeCliente}</td>
-              <td>{agendamento.dataAgendamento}</td>
-              <td>{agendamento.horarioDoAgendamento}</td>
+          {Agendamentos.map((Agendamentos) => (
+            <tr key={Agendamentos.id}>
+              <td>{Agendamentos.nomeCliente}</td>
+              <td>{Agendamentos.dataAgendamento}</td>
+              <td>{Agendamentos.horarioDoAgendamento}</td>
               <td>
-                <Link to={`/editar/${agendamento.id}`} className="btn btn-primary">Editar</Link>
-                <Button variant="danger" onClick={() => deleteAgendamento(agendamento.id)}>Excluir</Button>
+                <Link to={`/editar/${agendamentos.id}`} className="btn btn-primary">Editar</Link>
+                <Button variant="danger" onClick={() => deleteagendamentos(Agendamentos.id)}>Excluir</Button>
               </td>
             </tr>
           ))}
